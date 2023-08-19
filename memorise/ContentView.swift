@@ -36,7 +36,11 @@ struct CardView: View {
             if card.isFaceUp {
                 shape.fill().foregroundColor(.white)
                 Text(card.content)
-            } else {
+            }
+            else if card.isMatched {
+                shape.opacity(0)
+            }
+            else {
                 shape.fill(Color(hue: 1.0, saturation: 0.0, brightness: 0.328))
             }
                 

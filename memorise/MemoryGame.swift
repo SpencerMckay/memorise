@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MemoryGame<CardContent> {
+struct MemoryGame<CardContent> where CardContent: Equatable {
     // The <CardConent> represents parsing a variable of any type which will be referenced as CardContent
     private(set) var cards: Array<Card>
     
@@ -15,23 +15,23 @@ struct MemoryGame<CardContent> {
     
     
     mutating func choose(_ card: Card) { // all function args are lets! need to find this card in the private array of cards, mutating makes this a ref/address parse type? not value parsed
-        if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }) {
+        if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }),
+           !cards[chosenIndex].isFaceUp,
+           !cards[chosenIndex].isMatched {
             
-            if let potentialMatchIndex = currentFaceUpCardtIndex {
-                if potentialMatchIndex == chosenIndex {
+            if let potentialMatchIndex = currentFaceUpCardIndex {
+                if cards[potentialMatchIndex].content == cards[chosenIndex].content {
                     cards[potentialMatchIndex].isMatched = true
                     cards[chosenIndex].isMatched = true
-                } else {
-                    cards[potentialMatchIndex].isFaceUp = false
-                    cards[chosenIndex].isFaceUp = false
-                    currentFaceUpCardIndex = .none
-                    
                 }
+                currentFaceUpCardIndex = .none
             } else {
+                for index in cards.indices {
+                    cards[index].isFaceUp = false
+                }
                 currentFaceUpCardIndex = chosenIndex
-                cards[chosenIndex].isFaceUp.toggle()
             }
-            
+            cards[chosenIndex].isFaceUp.toggle()
             
         }
     }
