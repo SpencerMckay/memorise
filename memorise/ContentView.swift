@@ -11,18 +11,43 @@ struct ContentView: View {
     @ObservedObject var emojiMemoryGame: EmojiMemoryGame
 
     var body: some View {
-        ScrollView{
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 60))]) {
-                ForEach(emojiMemoryGame.cards) {
-                    card in CardView(card: card)
-                        .aspectRatio(2/3, contentMode: .fit)
-                        .onTapGesture {
-                            emojiMemoryGame.tapCard(card)
-                        }
+        VStack {
+            Text("Memorise")
+                .font(.title)
+            
+            ScrollView{
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 60))]) {
+                    ForEach(emojiMemoryGame.cards) {
+                        card in CardView(card: card)
+                            .aspectRatio(2/3, contentMode: .fit)
+                            .onTapGesture {
+                                emojiMemoryGame.tapCard(card)
+                            }
+                    }
                 }
             }
+            .padding(.horizontal)
+            
+            HStack {
+                Spacer()
+                
+                VStack{
+                    Image(systemName: "globe.americas")
+                    Text("Flags")
+                }
+                VStack{
+                    Image(systemName: "lock.circle")
+                    Text("Locks & Keys")
+                }
+                VStack{
+                    Image(systemName: "bolt.circle")
+                    Text("Other")
+                }
+                
+                Spacer()
+            }
         }
-        .padding(.horizontal)
+        
     }
 }
 
