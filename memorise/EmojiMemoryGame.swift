@@ -8,11 +8,13 @@
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
-    static let emojis = ["👻", "💀", "🗡️", "🌌", "✨", "🏁"]
+
+    
     
     static func createMemoryGame() -> MemoryGame<String> {
-        MemoryGame<String>(numberofPairsOfCards: 5) {
-            pairIndex in emojis[pairIndex]
+        
+        MemoryGame<String>(numberofPairsOfCards: nightEmojis.count) {
+            pairIndex in nightEmojis[pairIndex]
         }
     }
     

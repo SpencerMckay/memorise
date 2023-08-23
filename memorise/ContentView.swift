@@ -30,22 +30,43 @@ struct ContentView: View {
             
             HStack {
                 Spacer()
+                Spacer()
                 
                 VStack{
                     Image(systemName: "globe.americas")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 36, height: 36)
+                    
                     Text("Flags")
-                }
-                VStack{
-                    Image(systemName: "lock.circle")
-                    Text("Locks & Keys")
-                }
-                VStack{
-                    Image(systemName: "bolt.circle")
-                    Text("Other")
                 }
                 
                 Spacer()
+                
+                VStack{
+                    Image(systemName: "lock.circle")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 36, height: 36)
+                    
+                    Text("Locksmith")
+                }
+
+                Spacer()
+                
+                VStack{
+                    Image(systemName: "moon.stars")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 36, height: 36)
+                    
+                    Text("Night")
+                }
+                
+                Spacer()
+                Spacer()
             }
+            .font( .title3)
         }
         
     }
