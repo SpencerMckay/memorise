@@ -14,12 +14,13 @@ struct ContentView: View {
         VStack {
             Text("Memorise")
                 .font(.title)
-                
+            
+            Text("\(emojiMemoryGame.activeTheme.themeName)")
                 
                 ScrollView{
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 60))]) { // Why is this a lazy grid?
                         ForEach(emojiMemoryGame.cards) {
-                            card in CardView(card: card)
+                            card in CardView(card: card, cardColor: emojiMemoryGame.activeTheme.cardsColour)
                                 .aspectRatio(2/3, contentMode: .fit)
                                 .onTapGesture {
                                     emojiMemoryGame.tapCard(card) // Wtf???
@@ -49,6 +50,7 @@ struct ContentView: View {
 
 struct CardView: View {
     let card: MemoryGame<String>.Card
+    let cardColor: String
 
     var body: some View {
         ZStack {

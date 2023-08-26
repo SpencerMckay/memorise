@@ -16,37 +16,45 @@ class EmojiMemoryGame: ObservableObject {
         var cardsColour: String
     }
     
-
-    static let themes = [
-        Theme(
-            themeName: "Night",
-            cardDeck: ["👻", "😈", "😱", "🌌", "✨", "🌜"],
-            numPairs: 5,
-            cardsColour: "purple"
-        ),
-        Theme(
-            themeName: "Locksmith",
-            cardDeck: ["🔒","🔑","🗝️","🔐","⛓️","🚪","💎", "🥷🏻"],
-            numPairs: 8,
-            cardsColour: "gold"
-        ),
-        Theme(
-            themeName: "Flags",
-            cardDeck: ["🇺🇸", "🇳🇿", "🇦🇺", "🇬🇧", "🇨🇦", "🇯🇵", "🇨🇳", "🇰🇷", "🇸🇬",
-                       "🇩🇪", "🇫🇷", "🇪🇸", "🇨🇭", "🇮🇹", "🇮🇱", "🇧🇷"],
-            numPairs: 16,
-            cardsColour: "red"
-        )
-    ]
-
+    private let themes: [Theme]
+    private(set) var activeTheme: Theme
+    @Published private var model: MemoryGame<String>
+    
+    init() {
+        
+        self.themes = [
+            Theme(
+                themeName: "Night",
+                cardDeck: ["👻", "😈", "😱", "🌌", "✨", "🌜"],
+                numPairs: 5,
+                cardsColour: "purple"
+            ),
+            Theme(
+                themeName: "Locksmith",
+                cardDeck: ["🔒","🔑","🗝️","🔐","⛓️","🚪","💎", "🥷🏻"],
+                numPairs: 8,
+                cardsColour: "gold"
+            ),
+            Theme(
+                themeName: "Flags",
+                cardDeck: ["🇺🇸", "🇳🇿", "🇦🇺", "🇬🇧", "🇨🇦", "🇯🇵", "🇨🇳", "🇰🇷", "🇸🇬",
+                           "🇩🇪", "🇫🇷", "🇪🇸", "🇨🇭", "🇮🇹", "🇮🇱", "🇧🇷"],
+                numPairs: 16,
+                cardsColour: "red"
+            )
+        ]
+        
+        self.activeTheme = self.themes.randomElement()!
+        self.model = EmojiMemoryGame.createMemoryGame(theme: self.activeTheme)
+    }
+    
 
     static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
-        var cardsToUse = theme.cardDeck
+        var cardsToUse = theme.cardDeck.shuffled()
         
         let availableCards = min(theme.cardDeck.count, theme.numPairs) // Don't cause error allow having more pairs than unique cards
-        for _ in 0..<(availableCards - theme.numPairs) { // remove cards if deck has more than number to be used by theme
-            let throwoutCardIndex = cardsToUse.indices.randomElement()!
-            cardsToUse.remove(at: throwoutCardIndex)
+        for _ in 0..<(theme.cardDeck.count-availableCards) { // remove cards if deck has more than number to be used by theme
+            cardsToUse.removeLast()
         }
         
         return MemoryGame<String>(numberofPairsOfCards: cardsToUse.count) {
@@ -54,18 +62,20 @@ class EmojiMemoryGame: ObservableObject {
         }
     }
     
+    
 
-    @Published private var activeModel: MemoryGame<String> = createMemoryGame(theme: themes.randomElement()!)
     
     var cards: Array<MemoryGame<String>.Card> {
-        return activeModel.cards
+        return model.cards
     }
     
     func tapCard(_ card: MemoryGame<String>.Card) {
-        activeModel.choose(card)
+        model.choose(card)
     }
     
     func newGame() {
-        activeModel = EmojiMemoryGame.createMemoryGame(theme: EmojiMemoryGame.themes.randomElement()!)
+        activeTheme = themes.randomElement()!
+        model = EmojiMemoryGame.createMemoryGame(theme: activeTheme)
     }
+    
 }
