@@ -17,10 +17,6 @@
 		09F60F542A638C42002C461D /* memorise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 09F60F522A638C42002C461D /* memorise.xcdatamodeld */; };
 		09F60F5D2A638C71002C461D /* Models in Resources */ = {isa = PBXBuildFile; fileRef = 09F60F5A2A638C71002C461D /* Models */; };
 		09F60F5E2A638C71002C461D /* ViewModels in Resources */ = {isa = PBXBuildFile; fileRef = 09F60F5B2A638C71002C461D /* ViewModels */; };
-		09F60F5F2A638C71002C461D /* Views in Resources */ = {isa = PBXBuildFile; fileRef = 09F60F5C2A638C71002C461D /* Views */; };
-		09F60F632A638C87002C461D /* Views in Resources */ = {isa = PBXBuildFile; fileRef = 09F60F602A638C86002C461D /* Views */; };
-		09F60F642A638C87002C461D /* ViewModels in Resources */ = {isa = PBXBuildFile; fileRef = 09F60F612A638C87002C461D /* ViewModels */; };
-		09F60F652A638C87002C461D /* Models in Resources */ = {isa = PBXBuildFile; fileRef = 09F60F622A638C87002C461D /* Models */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,12 +153,8 @@
 			files = (
 				09F60F5D2A638C71002C461D /* Models in Resources */,
 				09F60F5E2A638C71002C461D /* ViewModels in Resources */,
-				09F60F652A638C87002C461D /* Models in Resources */,
 				09F60F4F2A638C42002C461D /* Preview Assets.xcassets in Resources */,
-				09F60F632A638C87002C461D /* Views in Resources */,
 				09F60F4C2A638C42002C461D /* Assets.xcassets in Resources */,
-				09F60F5F2A638C71002C461D /* Views in Resources */,
-				09F60F642A638C87002C461D /* ViewModels in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

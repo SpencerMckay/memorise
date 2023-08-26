@@ -14,63 +14,38 @@ struct ContentView: View {
         VStack {
             Text("Memorise")
                 .font(.title)
-            
-            ScrollView{
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 60))]) {
-                    ForEach(emojiMemoryGame.cards) {
-                        card in CardView(card: card)
-                            .aspectRatio(2/3, contentMode: .fit)
-                            .onTapGesture {
-                                emojiMemoryGame.tapCard(card)
-                            }
+                
+                
+                ScrollView{
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 60))]) { // Why is this a lazy grid?
+                        ForEach(emojiMemoryGame.cards) {
+                            card in CardView(card: card)
+                                .aspectRatio(2/3, contentMode: .fit)
+                                .onTapGesture {
+                                    emojiMemoryGame.tapCard(card) // Wtf???
+                                }
+                        }
                     }
                 }
-            }
-            .padding(.horizontal)
+                .padding(.horizontal)
+                
             
             HStack {
                 Spacer()
-                Spacer()
                 
-                VStack{
-                    Image(systemName: "globe.americas")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 36, height: 36)
-                    
-                    Text("Flags")
+                Button("New Game") {
+                    print("nothing")
                 }
                 
-                Spacer()
                 
-                VStack{
-                    Image(systemName: "lock.circle")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 36, height: 36)
-                    
-                    Text("Locksmith")
-                }
-
-                Spacer()
-                
-                VStack{
-                    Image(systemName: "moon.stars")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 36, height: 36)
-                    
-                    Text("Night")
-                }
-                
-                Spacer()
                 Spacer()
             }
-            .font( .title3)
+            
         }
         
     }
 }
+
 
 struct CardView: View {
     let card: MemoryGame<String>.Card
@@ -87,10 +62,13 @@ struct CardView: View {
                 shape.opacity(0)
             }
             else {
-                shape.fill(Color(hue: 1.0, saturation: 0.0, brightness: 0.328))
+                shape.fill()
             }
                 
         }
     }
 }
+    
+
+    
 

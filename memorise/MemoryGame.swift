@@ -7,18 +7,8 @@
 
 import Foundation
 
-struct MemoryGame<CardContent> where CardContent: Equatable {
+struct MemoryGame<CardContent> where CardContent: Equatable { //It can be any type but this type will be Equatable
     // The <CardConent> represents parsing a variable of any type which will be referenced as CardContent
-    let nightEmojis = ["👻", "😈", "😱", "🌌", "✨", "🌜"]
-    let locksmithEmojis = ["🔒","🔑","🗝️","🔐","⛓️","🚪","💎", "🥷🏻"]
-    let flagEmojis = ["🇺🇸", "🇳🇿", "🇦🇺", "🇬🇧", "🇨🇦", "🇯🇵", "🇨🇳", "🇰🇷", "🇸🇬",
-    "🇩🇪", "🇫🇷", "🇪🇸", "🇨🇭", "🇮🇹", "🇮🇱", "🇧🇷"]
-    
-    enum Theme {
-        case night
-        case locksmith
-        case flags
-    }
     
     private(set) var cards: Array<Card>
     
