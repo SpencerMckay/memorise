@@ -43,7 +43,8 @@ class EmojiMemoryGame: ObservableObject {
     static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
         var cardsToUse = theme.cardDeck
         
-        for _ in 0..<(theme.cardDeck.count - theme.numPairs) { // remove cards if deck has more than number to be used by theme
+        let availableCards = min(theme.cardDeck.count, theme.numPairs) // Don't cause error allow having more pairs than unique cards
+        for _ in 0..<(availableCards - theme.numPairs) { // remove cards if deck has more than number to be used by theme
             let throwoutCardIndex = cardsToUse.indices.randomElement()!
             cardsToUse.remove(at: throwoutCardIndex)
         }
