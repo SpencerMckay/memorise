@@ -34,7 +34,7 @@ struct ContentView: View {
                 Spacer()
                 
                 Button("New Game") {
-                    print("nothing")
+                    emojiMemoryGame.newGame()
                 }
                 
                 

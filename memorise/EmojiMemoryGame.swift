@@ -54,15 +54,17 @@ class EmojiMemoryGame: ObservableObject {
     }
     
 
-    @Published private var model: MemoryGame<String> = createMemoryGame(theme: themes.randomElement()!)
+    @Published private var activeModel: MemoryGame<String> = createMemoryGame(theme: themes.randomElement()!)
     
     var cards: Array<MemoryGame<String>.Card> {
-        return model.cards.shuffled()
+        return activeModel.cards
     }
     
     func tapCard(_ card: MemoryGame<String>.Card) {
-        model.choose(card)
+        activeModel.choose(card)
     }
     
-    
+    func newGame() {
+        activeModel = EmojiMemoryGame.createMemoryGame(theme: EmojiMemoryGame.themes.randomElement()!)
+    }
 }
