@@ -13,34 +13,33 @@ struct MemoryGame<CardContent> where CardContent: Equatable { //It can be any ty
     private(set) var cards: Array<Card>
 
     
-    private var currentFaceUpCardIndex: Int?
+    private var currentFaceUpCardIndex: Int? {
+        get { cards.indices.filter( {cards[$0].isFaceUp}).oneAndOnly }
+        set { cards.indices.forEach { cards[$0].isFaceUp = ($0 == newValue) } } //set it to be false if the card doesn't equal the newValue
+    }
     
     
-    mutating func choose(_ card: Card) { // all function args are lets! need to find this card in the private array of cards, mutating makes this a ref/address parse type? not value parsed
+    mutating func choose(_ card: Card) { // usually all function args are lets! need to find this card in the private array of cards, mutating makes this a ref/address parse type? not value parsed
         if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }),
            !cards[chosenIndex].isFaceUp,
            !cards[chosenIndex].isMatched {
             
             if let potentialMatchIndex = currentFaceUpCardIndex {
                 if cards[potentialMatchIndex].content == cards[chosenIndex].content {
-                    cards[potentialMatchIndex].isMatched = true
+                    cards[potentialMatchIndex].isMatched = true 
                     cards[chosenIndex].isMatched = true
                 }
-                currentFaceUpCardIndex = .none
+                cards[chosenIndex].isFaceUp = true
             } else {
-                for index in cards.indices {
-                    cards[index].isFaceUp = false
-                }
                 currentFaceUpCardIndex = chosenIndex
             }
-            cards[chosenIndex].isFaceUp.toggle()
             
         }
     }
     
     
     init(numberofPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
-        cards = Array<Card>()
+        cards = []
         // add NumberOfPairsOfCards x 2 cards to cards array
         for pairIndex in 0..<numberofPairsOfCards {
             let content = createCardContent(pairIndex)
@@ -60,4 +59,16 @@ struct MemoryGame<CardContent> where CardContent: Equatable { //It can be any ty
         var content: CardContent
     }
     
+}
+
+
+extension Array {
+    var oneAndOnly: Element? {
+        if self.count == 1 {
+            return self.first
+        } else {
+            return nil
+        }
+            
+    }
 }

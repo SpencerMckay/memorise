@@ -28,6 +28,7 @@ struct ContentView: View {
                         }
                     }
                 }
+                .foregroundColor(.blue)
                 .padding(.horizontal)
                 
             
@@ -58,7 +59,9 @@ struct CardView: View {
             
             if card.isFaceUp {
                 shape.fill().foregroundColor(.white)
+                shape.strokeBorder(lineWidth: 3)
                 Text(card.content)
+                    .font(.largeTitle)
             }
             else if card.isMatched {
                 shape.opacity(0)
@@ -72,5 +75,16 @@ struct CardView: View {
 }
     
 
+
+struct EmojiMemoryGame_Previews: PreviewProvider {
+    static var previews: some View {
+        let game = EmojiMemoryGame()
+        ContentView(emojiMemoryGame: game)
+            .preferredColorScheme(.dark)
+        ContentView(emojiMemoryGame: game)
+            .preferredColorScheme(.light)
+        
+    }
+}
     
 
