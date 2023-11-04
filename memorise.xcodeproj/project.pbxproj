@@ -10,6 +10,9 @@
 		097FD6B92A75F392004482BD /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097FD6B82A75F392004482BD /* MemoryGame.swift */; };
 		097FD6BB2A75F3D4004482BD /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097FD6BA2A75F3D4004482BD /* EmojiMemoryGame.swift */; };
 		0986DAA32AB59719000DA44D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0986DAA22AB59719000DA44D /* ContentView.swift */; };
+		0986DAA52AB69A98000DA44D /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0986DAA42AB69A98000DA44D /* AspectVGrid.swift */; };
+		0986DAA92AB6AA72000DA44D /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0986DAA82AB6AA72000DA44D /* Pie.swift */; };
+		09B9C6A32AE62F3700B565F3 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B9C6A22AE62F3700B565F3 /* Cardify.swift */; };
 		09F60F482A638C41002C461D /* memoriseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F60F472A638C41002C461D /* memoriseApp.swift */; };
 		09F60F4C2A638C42002C461D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09F60F4B2A638C42002C461D /* Assets.xcassets */; };
 		09F60F4F2A638C42002C461D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09F60F4E2A638C42002C461D /* Preview Assets.xcassets */; };
@@ -23,6 +26,9 @@
 		097FD6B82A75F392004482BD /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 		097FD6BA2A75F3D4004482BD /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 		0986DAA22AB59719000DA44D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0986DAA42AB69A98000DA44D /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
+		0986DAA82AB6AA72000DA44D /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
+		09B9C6A22AE62F3700B565F3 /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 		09F60F442A638C41002C461D /* memorise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memorise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09F60F472A638C41002C461D /* memoriseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memoriseApp.swift; sourceTree = "<group>"; };
 		09F60F4B2A638C42002C461D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +57,7 @@
 		09F60F3B2A638C41002C461D = {
 			isa = PBXGroup;
 			children = (
+				09B9C6A22AE62F3700B565F3 /* Cardify.swift */,
 				09F60F462A638C41002C461D /* memorise */,
 				09F60F452A638C41002C461D /* Products */,
 			);
@@ -72,6 +79,8 @@
 				09F60F602A638C86002C461D /* Views */,
 				09F60F472A638C41002C461D /* memoriseApp.swift */,
 				0986DAA22AB59719000DA44D /* ContentView.swift */,
+				0986DAA82AB6AA72000DA44D /* Pie.swift */,
+				0986DAA42AB69A98000DA44D /* AspectVGrid.swift */,
 				097FD6B82A75F392004482BD /* MemoryGame.swift */,
 				097FD6BA2A75F3D4004482BD /* EmojiMemoryGame.swift */,
 				09F60F4B2A638C42002C461D /* Assets.xcassets */,
@@ -167,6 +176,9 @@
 			files = (
 				09F60F512A638C42002C461D /* Persistence.swift in Sources */,
 				097FD6B92A75F392004482BD /* MemoryGame.swift in Sources */,
+				0986DAA92AB6AA72000DA44D /* Pie.swift in Sources */,
+				09B9C6A32AE62F3700B565F3 /* Cardify.swift in Sources */,
+				0986DAA52AB69A98000DA44D /* AspectVGrid.swift in Sources */,
 				0986DAA32AB59719000DA44D /* ContentView.swift in Sources */,
 				09F60F542A638C42002C461D /* memorise.xcdatamodeld in Sources */,
 				09F60F482A638C41002C461D /* memoriseApp.swift in Sources */,
